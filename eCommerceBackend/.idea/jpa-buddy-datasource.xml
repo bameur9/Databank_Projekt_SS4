@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpbDataSourceConfig">
+    <data-sources>
+      <data-source id="1a1800d5-a56d-4b44-914a-421e2c486763" name="full-stack-ecommerce" url="jdbc:mysql://localhost:3306/full-stack-ecommerce?useSSL=false&amp;useUnicode=yes&amp;characterEncoding=UTF-8&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC" driverClass="com.mysql.cj.jdbc.Driver" />
+    </data-sources>
+  </component>
+</project>
