@@ -32,8 +32,6 @@ export class CartService {
 
 
   addToCart(cartItem : CartItem):void{
-
-    //check if item already exist in Cart
     let itemAlreadyExistInCart: boolean = false;
     let existingCartItem!: CartItem;
 
