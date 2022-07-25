@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="row justify-content-center bg-white shadow-lg">
+        <div class="text-center p-4  bg-dark">
+            <h4 class="text-white">{{action}} Product</h4>
+        </div>
+        <hr>
+
+        <form class="row p-3" (ngSubmit)="formSubmit()">
+            <div class="col-md-6">
+                <label for="sku" class="form-label">Sku</label>
+                <input type="text" required class="form-control border-3" [(ngModel)]="sku" name="sku">
+            </div>
+            <div class="col-md-12">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" required class="form-control border-3" [(ngModel)]="name" name="name">
+            </div>
+            <div class="col-12">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control border-3" placeholder="Product description..." required style="height: 100px" [(ngModel)]="description" name="description"></textarea>
+            </div>
+            <div class="col-4">
+                <label for="unitPrice" class="form-label">UnitPrice</label>
+                <input type="number" required class="form-control border-3" [(ngModel)]="unitPrice" name="unitPrice">
+            </div>
+            <div class="col-md-4">
+                <label for="unitsInStock" class="form-label">UnitsInStock</label>
+                <input type="number" class="form-control border-3" [(ngModel)]="unitsInStock" name="unitsInStock" required>
+            </div>
+            <div class="col-md-12">
+                <label for="imageUrl" class="form-label">ImageUrl</label>
+                <input class="form-control form-control-sm" name="imageUrl" type="file" [(ngModel)]="imageUrl">
+
+            </div>
+
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <a class="btn btn-info shadow border" routerLink="/admin/dashboard">Cancel</a>
+                </div>
+
+                <div class="col">
+                    <button type="submit" class="btn btn-success shadow border">{{action}}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

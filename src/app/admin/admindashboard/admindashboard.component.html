@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <div class="row g-0">
+
+        <div class="col-lg-2">
+            <div class="card p-1 border-left-0" style="width: 20rem;">
+                <div class="card-header text-center bg-black">
+                    <h3 class="text-white">Management</h3>
+                </div>
+                <ul class="list-group list-group-flush">
+
+                    <li class="list-group-item p-5">
+                        <a routerLink="/admin/dashboard/1" routerLinkActive="router-link-active">Products</a>
+                    </li>
+
+                    <li class="list-group-item p-5">
+                        <a routerLink="/admin/dashboard/2" routerLinkActive="router-link-active">Categories</a>
+                    </li>
+
+
+                    <li class="list-group-item p-5" routerLink="/admin/dashboard" routerLinkActive="active-link">A third item</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-lg-10">
+            <app-products></app-products>
+
+        </div>
+    </div>
+
+</div>

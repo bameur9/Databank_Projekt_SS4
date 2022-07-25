@@ -1,0 +1,20 @@
+<div class="input-group" *ngIf="smallSearchInput">
+    <input type="text" class="form-control" #inputSearch (keyup.enter)="searchProduct(inputSearch.value)" placeholder="Search for products">
+
+    <div class="input-group-append">
+        <a class="btn input-group-text bg-transparent text-white" type="button" (click)="searchProduct(inputSearch.value)">
+            <i class="fa fa-search"></i></a>
+
+    </div>
+</div>
+
+
+
+<div class="input-group" *ngIf="!smallSearchInput">
+    <input type="text" class="form-control" placeholder="Search by name" #inputSearch (keyup.enter)="searchProduct(inputSearch.value)">
+    <a class="btn input-group-append" type="button">
+        <span class="input-group-text bg-transparent text-primary">
+        <i class="fa fa-search"></i>
+    </span>
+    </a>
+</div>

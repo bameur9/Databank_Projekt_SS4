@@ -1,0 +1,203 @@
+<!-- Checkout Start -->
+<div class="container-fluid pt-5">
+    <div class="row px-xl-5 ">
+        <div class="col-lg-8">
+            <form [formGroup]="checkoutFormGroup" (ngSubmit)="OnSubmit()">
+                <div class="mb-4 card border-secondary mb-5">
+
+                    <div class="card-header bg-secondary border-0">
+                        <h4 class="font-weight-semi-bold mb-0">Customer</h4>
+                    </div>
+                    <div class="row p-3" formGroupName="customer">
+                        <div class="col-md-6 form-group">
+                            <label>First Name</label>
+                            <input class="form-control" name="firstName" formControlName="firstName" type="text" placeholder="John">
+
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Last Name</label>
+                            <input class="form-control" name="lastName" formControlName="lastName" type="text" placeholder="Doe">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>E-mail</label>
+                            <input class="form-control" name="email" formControlName="email" type="text" placeholder="example@email.com">
+                        </div>
+                    </div>
+                </div>
+                <!-- Shipping Address Start -->
+                <div class="mb-4 card border-secondary mb-5">
+
+                    <div class="card-header bg-secondary border-0">
+                        <h4 class="font-weight-semi-bold mb-0">Shipping Address</h4>
+                    </div>
+                    <div class="row p-3" formGroupName="shippingAddress">
+
+                        <div class="col-md-6 form-group">
+                            <label>Street</label>
+                            <input formControlName="street" class="form-control" type="text" placeholder="123 Street">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Country</label>
+                            <select formControlName="country" class="form-select" (change)="getStates('shippingAddress')">
+                              <option *ngFor="let country of countries" [ngValue]="country">{{country.name}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>City</label>
+                            <input formControlName="city" class="form-control" type="text" placeholder="New York">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>State</label>
+                            <select formControlName="state" class="form-select">
+                              <option *ngFor="let state of shippingAddressStates" [ngValue]="state">{{state.name}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>ZIP Code</label>
+                            <input formControlName="zipCode" class="form-control" type="text" placeholder="12345">
+                        </div>
+                    </div>
+                    <div class="col-md-12 form-group">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="shipto" (change)="copyShippingAddressToBillingAddress($event)">
+                            <label class="custom-control-label" for="shipto">Shipping same to billing address</label>
+                            <!--<label class="custom-control-label" for="shipto" data-toggle="collapse" data-target="#billing-address">billing to different address</label>-->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Billing Address Start -->
+                <div class="mb-4 card border-secondary  mb-5" id="billing-address">
+
+                    <div class="card-header bg-secondary border-0">
+                        <h4 class="font-weight-semi-bold mb-0">Billing Address</h4>
+                    </div>
+                    <div class="row p-3" formGroupName="billingAddress">
+
+                        <div class="col-md-6 form-group">
+                            <label>Street</label>
+                            <input formControlName="street" class="form-control" type="text" placeholder="123 Street">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Country</label>
+                            <select formControlName="country" class="form-select">
+                              <option *ngFor="let country of countries" [ngValue]="country">{{country.name}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>City</label>
+                            <input formControlName="city" class="form-control" type="text" placeholder="New York">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>State</label>
+                            <select formControlName="state" class="form-select">
+                              <option *ngFor="let state of shippingAddressStates" [ngValue]="state">{{state.name}}</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>ZIP Code</label>
+                            <input formControlName="zipCode" class="form-control" type="text" placeholder="12345">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Credit Card Start -->
+                <div class="mb-4 card border-secondary mb-5">
+
+                    <div class="card-header bg-secondary border-0">
+                        <h4 class="font-weight-semi-bold mb-0">credit Card</h4>
+                    </div>
+                    <div class="row p-3" formGroupName="creditCard">
+
+                        <div class="col-md-6 form-group">
+                            <label>Carte type</label>
+                            <select formControlName="cartType" class="form-select">
+                              <option>Visa</option>
+                              <option>Mastercard</option>
+                          </select>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Name on Card</label>
+                            <input formControlName="nameOnCard" class="form-control" type="text" placeholder="Stephane Smith">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Card Number</label>
+                            <input formControlName="cardNumber" class="form-control" type="text" placeholder="XXXX XXXX XXXX XXXX">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Security Code</label>
+                            <input formControlName="securityCode" class="form-control" type="text" placeholder="XXX">
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Expiration Month</label>
+                            <select formControlName="expirationMonth" class="form-select">
+                              <option *ngFor="let month of creditCardMonths">
+                                  {{ month }}
+                              </option>
+                          </select>
+                        </div>
+                        <div class="col-md-6 form-group">
+                            <label>Expiration Year</label>
+                            <select formControlName="expirationYear" (change)="handleMonthsAndYears()" class="form-select">
+                              <option *ngFor="let year of creditCardYears">
+                                  {{ year }}
+                              </option>
+                          </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent col-md-4">
+                    <button type="submit" class="btn btn-lg btn-block btn-primary  shadow font-weight-bold my-3 py-3" [disabled]="!checkoutFormGroup.valid">Purchase</button>
+                </div>
+
+            </form>
+
+
+        </div>
+        <div class="col-lg-4">
+            <div class="card border-secondary mb-5">
+                <div class="card-header bg-secondary border-0">
+                    <h4 class="font-weight-semi-bold m-0">Order Total</h4>
+                </div>
+                <div class="card-body">
+                    <h5 class="font-weight-medium mb-3">Products</h5>
+                    <div class="d-flex justify-content-between" *ngFor="let cartIt of cartItems">
+                        <p>{{cartIt.name}} X {{cartIt.quantity}}</p>
+                        <p>{{cartIt.unitPrice}}</p>
+                    </div>
+
+                    <hr class="mt-0">
+                    <div class="d-flex justify-content-between mb-3 pt-1">
+                        <h6 class="font-weight-medium">Quantity</h6>
+                        <h6 class="font-weight-medium">{{totalQuantity}}</h6>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <h6 class="font-weight-medium">Shipping</h6>
+                        <h6 class="font-weight-medium">free</h6>
+                    </div>
+                </div>
+                <div class="card-footer border-secondary bg-transparent">
+                    <div class="d-flex justify-content-between mt-2">
+                        <h5 class="font-weight-bold">Total</h5>
+                        <h5 class="font-weight-bold">{{totalPrice | currency : 'EUR'}}</h5>
+                    </div>
+                </div>
+
+            </div>
+            <div class="bg-info p-3 rounded ">
+                <h6>Validator</h6>
+                <div class="text-white">
+                    <span>1. All text fields are required and least 2 long</span> <br>
+                    <span>2. Email zb: John.smith@exemple.com</span> <br>
+                    <span>3. Zip Code at least 5 numbers </span> <br>
+                    <span>4. Zip Code at least 5 numbers </span> <br>
+                    <span>5. Card Number must be 16 digits long</span> <br>
+                    <span>6. Security code must be 3 digits long</span> <br>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    <!-- Checkout End -->

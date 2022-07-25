@@ -1,0 +1,9 @@
+<div class="navbar-nav ml-auto py-0" *ngIf="isAuthenticated" (click)="logout()">
+    <a routerLinkActive="active-link cursor-pointer" type="button" class=" btn nav-item nav-link" *ngIf="isAuthenticated">Logout</a>
+    <i class="fas fa-right-to-bracket"></i>
+</div>
+
+<div class="navbar-nav ml-auto py-0" *ngIf="!isAuthenticated">
+    <a routerLink="/login" type="btn" routerLinkActive="active-link" class="btn nav-item nav-link cursor-pointer">Login</a>
+    <a class="nav-item nav-link">Register</a>
+</div>
