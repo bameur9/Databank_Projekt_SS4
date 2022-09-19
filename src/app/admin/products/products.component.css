@@ -2,3 +2,8 @@ td,
 a:hover {
     color: #efef;
 }
+
+.active-link {
+    font-weight: bold;
+    color: #D19C97
+}

@@ -1,3 +1,5 @@
+import { ProductCategory } from "./product-category";
+
 export class Product {
   id!: number;
   sku!: string;
@@ -9,4 +11,10 @@ export class Product {
   unitsInStock!: number;
   dateCreated?: Date;
   lastUpdated?:Date;
+  category!: ProductCategory;
+
+
+  public setCategory(category: ProductCategory):void {
+    this.category = category;
+  }
 }

@@ -9,23 +9,22 @@
                 <ul class="list-group list-group-flush">
 
                     <li class="list-group-item p-5">
-                        <a routerLink="/admin/dashboard/1" routerLinkActive="router-link-active">Products</a>
+                        <a routerLink="/admin/dashboard/productCategories/" routerLinkActive="active-link">Products</a>
                     </li>
 
                     <li class="list-group-item p-5">
-                        <a routerLink="/admin/dashboard/2" routerLinkActive="router-link-active">Categories</a>
+                        <a routerLink="/admin/dashboard/categories/" routerLinkActive="active-link">Categories</a>
                     </li>
-
-
-                    <li class="list-group-item p-5" routerLink="/admin/dashboard" routerLinkActive="active-link">A third item</li>
                 </ul>
             </div>
         </div>
 
         <div class="col-lg-10">
             <app-products></app-products>
-
+            <app-categories></app-categories>
         </div>
+
+
     </div>
 
 </div>

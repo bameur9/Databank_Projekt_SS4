@@ -6,11 +6,28 @@
         <hr>
 
         <form class="row p-3" (ngSubmit)="formSubmit()">
+            <div class="col-md-8" *ngIf="product != undefined || product != null ">
+                <label for="sku" class="form-label">Category</label>
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>{{category.categoryName}}</option>
+                </select>
+            </div>
+            <div class="col-md-8" *ngIf="product === undefined || product === null ">
+                <label for="sku" class="form-label">Category</label>
+
+                <select class="form-select" aria-label="Default select example" id="pCategory" name="pCategory" [(ngModel)]="category">
+
+                  <option value="" disabled selected>Choose a Category</option>
+                  <option *ngFor="let catItem of categories" [ngValue]="catItem">{{catItem.categoryName}}</option>
+
+              </select>
+            </div>
+
             <div class="col-md-6">
                 <label for="sku" class="form-label">Sku</label>
                 <input type="text" required class="form-control border-3" [(ngModel)]="sku" name="sku">
             </div>
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <label for="name" class="form-label">Name</label>
                 <input type="text" required class="form-control border-3" [(ngModel)]="name" name="name">
             </div>
@@ -28,14 +45,14 @@
             </div>
             <div class="col-md-12">
                 <label for="imageUrl" class="form-label">ImageUrl</label>
-                <input class="form-control form-control-sm" name="imageUrl" type="file" [(ngModel)]="imageUrl">
+                <input class="form-control form-control-sm" name="imageUrl" type="file" [(ngModel)]="imageUrl" (change)="selectFile($event)">
 
             </div>
 
             <hr>
             <div class="row">
                 <div class="col">
-                    <a class="btn btn-info shadow border" routerLink="/admin/dashboard">Cancel</a>
+                    <a class="btn btn-info shadow border" routerLink="/admin/dashboard/productCategories">Cancel</a>
                 </div>
 
                 <div class="col">

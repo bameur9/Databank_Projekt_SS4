@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdmindashboardComponent } from './admin/admindashboard/admindashboard.component';
+import { CategoriesComponent } from './admin/categories/categories.component';
+import { EditCreateCategoryComponent } from './admin/edit-create-category/edit-create-category.component';
 import { EditCreateComponent } from './admin/edit-create/edit-create.component';
 import { ProductsComponent } from './admin/products/products.component';
 import { CartDetailsComponent } from './components/cart-details/cart-details.component';
@@ -16,17 +18,20 @@ const routes: Routes = [
   {path: 'search/:keyword', component: ProductListComponent},
   {path: 'category/:id', component: ProductListComponent , canActivate: [UserGuard]},
   {path: 'products/:id', component: ProductDetailsComponent, canActivate: [UserGuard]},
-  {path: 'admin/dashboard/:id', component: AdmindashboardComponent,canActivate:[AdminGuard]},
-  {path: 'admin/dashboard/:action/:id', component: EditCreateComponent,canActivate:[AdminGuard]},
+  {path: 'admin/dashboard/productCategories/:id', component: AdmindashboardComponent,canActivate:[AdminGuard]},
+  {path: 'admin/dashboard/productCategories/:action/:id', component: EditCreateComponent,canActivate:[AdminGuard]},
+  {path: 'admin/dashboard/categories', component: AdmindashboardComponent, canActivate:[AdminGuard] },
+  {path: 'admin/dashboard/categories/:action/:id', component: EditCreateCategoryComponent, canActivate:[AdminGuard] },
   {path: 'cart-details', component: CartDetailsComponent, canActivate: [UserGuard]},
   {path: 'login', component: LoginComponent},
-  {path: 'admin/dashboard', component: AdmindashboardComponent,  canActivate:[AdminGuard]},
+  {path: 'admin/dashboard/productCategories', component: AdmindashboardComponent,  canActivate:[AdminGuard]},
   {path: 'checkout', component: CheckoutComponent, canActivate: [CheckoutGuard]},
   {path: 'category', component:ProductListComponent, canActivate: [UserGuard]},
   {path: 'products', component: ProductListComponent, canActivate: [UserGuard]},
 
-  {path: '', redirectTo: '/products', pathMatch: 'full' },
-  {path: '**', redirectTo: '/products', pathMatch: 'full'}
+  {path: '', redirectTo: '/products', pathMatch: 'full'  },
+  {path: '**', redirectTo: '/products', pathMatch: 'full' },
+
   //{path: '**', component: PageNotFountComponent} 404Errors
 ];
 

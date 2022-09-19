@@ -26,6 +26,10 @@ import { OrderComponent } from './components/order/order.component';
 import { ProductsComponent } from './admin/products/products.component';
 import { AdmindashboardComponent } from './admin/admindashboard/admindashboard.component';
 import { EditCreateComponent } from './admin/edit-create/edit-create.component';
+import { CategoriesComponent } from './admin/categories/categories.component';
+
+import { EditCreateCategoryComponent } from './admin/edit-create-category/edit-create-category.component';
+
 
 
 
@@ -48,7 +52,9 @@ import { EditCreateComponent } from './admin/edit-create/edit-create.component';
     OrderComponent,
     ProductsComponent,
     AdmindashboardComponent,
-    EditCreateComponent
+    EditCreateComponent,
+    CategoriesComponent,
+    EditCreateCategoryComponent
   ],
   imports: [
     BrowserModule,

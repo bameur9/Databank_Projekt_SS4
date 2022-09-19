@@ -17,7 +17,33 @@ export class ProductCategoryService {
       map(response => response._embedded.productCategory)
     );
   }
+
+  getProductCategoryById(id: number):Observable<ProductCategory>{
+    //http://localhost:8080/api/product-category/1
+    const url = `${this.categoryUrl}/${id}`;
+    return this.httpClient.get<ProductCategory>(url);
+  }
+
+  deleteProductCategory(id:number): Observable<ProductCategory>{
+    //http://localhost:8080/api/product-category/1
+
+    const url = `${this.categoryUrl}/${id}`;
+    return this.httpClient.delete<ProductCategory>(url);
+  }
+
+  updateCategory(id:number,  newCategory: ProductCategory): Observable<ProductCategory>{
+    //http://localhost:8080/api/product-category/1
+
+    const url = `${this.categoryUrl}/${id}`;
+    return this.httpClient.put<ProductCategory>(url, newCategory);
+  }
+
+  createCategory(newCategory: ProductCategory): Observable<ProductCategory>{
+    //http://localhost:8080/api/product-category/1
+    return this.httpClient.post<ProductCategory>(this.categoryUrl, newCategory);
+  }
 }
+
 
 interface GetResponseProductCategory{
   _embedded: {

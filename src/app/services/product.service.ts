@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { Product } from '../model/product';
+import { ProductCategory } from '../model/product-category';
 
 
 @Injectable({
@@ -30,12 +31,20 @@ export class ProductService {
     );
   }
 
+
   getProduct(productId: number): Observable<Product>{
      //http://localhost:8080/api/products/1
 
      const url = `${this.baseUrl}/${productId}`;
      return this.httpClient.get<Product>(url);
   }
+
+  getCategoryByProduct(id:number):Observable<ProductCategory>{
+    //http://localhost:8080/api/products/6/category
+    const url = `http://localhost:8080/api/products/${id}/category`;
+    return this.httpClient.get<ProductCategory>(url);
+  }
+
 
   getProductListWithPagination(page: number,
                               pageSize: number,
@@ -44,6 +53,7 @@ export class ProductService {
       const url = `${this.baseUrl}/search/findByCategoryId?id=${categoryId}&page=${page}&size=${pageSize}`;
       return this.httpClient.get<GetResponseProduct>(url);
   }
+
 
   searchProductsWithPagination(page: number,
                               pageSize: number,
@@ -66,6 +76,13 @@ export class ProductService {
     const url = `${this.baseUrl}/${productId}`;
 
     return this.httpClient.put<Product>(url, newProduct);
+  }
+
+  createProduct(newProduct: Product):  Observable<Product>{
+    //http://localhost:8080/api/product-category/1/products
+
+    const url = `http://localhost:8080/api/products/add`;
+    return this.httpClient.post<Product>(url, newProduct);
   }
 
 }

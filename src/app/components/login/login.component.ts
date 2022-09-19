@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
       )
 
       if(this.isAdmin == true){
-        this.router.navigateByUrl('/admin/dashboard');
+        this.router.navigateByUrl('/admin/dashboard/productCategories/1');
         return;
       }
 

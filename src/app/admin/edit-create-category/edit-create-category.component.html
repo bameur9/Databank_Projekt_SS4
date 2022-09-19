@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row justify-content-center bg-white shadow-lg">
+        <div class="text-center p-4  bg-dark">
+            <h4 class="text-white">{{action}} Category</h4>
+        </div>
+        <hr>
+
+        <form class="row p-3" (ngSubmit)="formSubmit()">
+
+            <div class="col-md-6">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" required class="form-control border-3" [(ngModel)]="name" name="name">
+            </div>
+
+            <hr>
+            <div class="row">
+                <div class="col">
+                    <a class="btn btn-info shadow border" routerLink="/admin/dashboard/categories/">Cancel</a>
+                </div>
+
+                <div class="col">
+                    <button type="submit" class="btn btn-success shadow border">{{action}}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

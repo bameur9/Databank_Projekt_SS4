@@ -12,7 +12,9 @@
                         <a routerLink="/products" routerLinkActive="active-link" class="nav-item nav-link" *ngIf="!isAdmin">Home</a>
 
                         <!--Admin Navbar-->
-                        <a routerLink="/admin/dashboard/1" routerLinkActive="active-link" class="nav-item nav-link" *ngIf="isAdmin">Products</a>
+                        <a routerLink="/admin/dashboard/productCategories/" routerLinkActive="active-link" class="nav-item nav-link" *ngIf="isAdmin">Products</a>
+
+                        <a routerLink="/admin/dashboard/categories/" routerLinkActive="active-link" class="nav-item nav-link" *ngIf="isAdmin">Categories</a>
 
 
                         <div class="nav-item dropdown" *ngIf="!isAdmin">

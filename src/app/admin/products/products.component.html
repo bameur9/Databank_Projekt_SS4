@@ -1,59 +1,76 @@
-<!-- Cart Start -->
 <div class="container-fluid">
-    <div class="row px-xl-5 justify-content-center">
+
+    <div class="row px-xl-5 justify-content-center" *ngIf="urlState === 'productCategories'">
         <div class="p-3">
-            <a class="btn btn-light rounded-1 shadow" [routerLink]="['/admin/dashboard', 'create', 0]">
+            <a class="btn btn-light rounded-1 shadow" [routerLink]="['/admin/dashboard/productCategories', 'create', 0]">
                 <span class="mr-2">Add new Product</span>
                 <i class="fas fa-plus"></i>
             </a>
 
         </div>
-        <div class="table-responsive mb-5">
-            <table class="table table-bordered text-center mb-0 text-white">
-                <thead class="bg-secondary text-dark">
-                    <tr>
-                        <th>Id</th>
-                        <th>Image</th>
-                        <th>Products</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody class="align-middle">
-                    <tr *ngFor="let product of products">
-                        <td class="align-middle"> {{product.id}}</td>
-                        <td class="align-middle bg-light">
-                            <img src="{{product.imageUrl}}" alt="" class="shadow rounded" style="max-height: 50px;">
-                        </td>
+        <div class="p-3">
+            <div class="container p-3 d-inline-flex" *ngIf="isAdmin">
 
-                        <td class="align-middle"> {{product.name}}</td>
-                        <td class="align-middle"> {{product.unitPrice | currency : 'EUR'}}</td>
-                        <td class="align-middle"> {{product.unitsInStock}}</td>
-                        <td class="align-middle">
+                <div class="col-md-3" *ngFor="let tempProductCat of productCategories">
+                    <div class="card p-2">
+                        <div class="d-flex justify-content-between align-items-center p-2 ">
+                            <div class="flex-column lh-1">
+                                <a routerLink="/admin/dashboard/productCategories/{{tempProductCat.id}}" routerLinkActive="active-link" class="nav-item nav-link text-dark">{{tempProductCat.categoryName}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                            <a [routerLink]="['/admin/dashboard', 'edit', product.id]" routerLinkActive="router-link-active">
+            <div class="table-responsive mb-5">
+                <table class="table table-bordered text-center mb-0 text-white">
+                    <thead class="bg-secondary text-dark">
+                        <tr>
+                            <th>Id</th>
+                            <th>Image</th>
+                            <th>Products</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="align-middle">
+                        <tr *ngFor="let product of products">
+                            <td class="align-middle"> {{product.id}}</td>
+                            <td class="align-middle bg-light">
+                                <img src="{{product.imageUrl}}" alt="" class="shadow rounded" style="max-height: 50px;">
+                            </td>
+
+                            <td class="align-middle"> {{product.name}}</td>
+                            <td class="align-middle"> {{product.unitPrice | currency : 'EUR'}}</td>
+                            <td class="align-middle"> {{product.unitsInStock}}</td>
+                            <td class="align-middle">
+
+                                <a [routerLink]="['/admin/dashboard/productCategories/', 'edit', product.id]" routerLinkActive="router-link-active">
                                 Edit
                             </a>
-                            <hr>
-                            <button class="btn-danger  w-100" (click)="remove(product.id)">
+                                <hr>
+                                <button class="btn-danger  w-100" (click)="remove(product.id)">
                             remove
                           </button>
 
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
 
-            <div class="" *ngIf="products.length > 0">
-                <div class="footer-pagination">
-                    <ngb-pagination [(page)]="pageNumber" [pageSize]="size" [collectionSize]="totalElements" [boundaryLinks]="true" (pageChange)="listProducts()">
+                <div class="" *ngIf="products.length > 0">
+                    <div class="footer-pagination">
+                        <ngb-pagination [(page)]="pageNumber" [pageSize]="size" [collectionSize]="totalElements" [boundaryLinks]="true" (pageChange)="listProducts()">
 
-                    </ngb-pagination>
+                        </ngb-pagination>
+                    </div>
+
                 </div>
 
             </div>
-
         </div>
     </div>
+
+
 </div>
